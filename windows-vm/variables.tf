@@ -44,7 +44,7 @@ variable "admin_password" {
 
 variable "existing" {
   type        = bool
-  description = "VM exists already: import the VM named name in resource_group_name and its network interface instead of creating them (made in the portal, say). Its other settings may stay empty: the plan shows what differs. Opsolete switches it off once imported."
+  description = "VM exists already: import the VM named name in resource_group_name and its network interface instead of creating them (made in the portal, say). Its other settings may stay empty: the plan shows what differs. OPS switches it off once imported."
   default     = false
 
   validation {

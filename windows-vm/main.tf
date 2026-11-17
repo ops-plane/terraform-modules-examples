@@ -12,7 +12,7 @@ locals {
 }
 
 module "nic" {
-  source                = "opsolete.localhost:8080/terraform-modules-examples/network-interface/azurerm"
+  source                = "ops.localhost:8080/terraform-modules-examples/network-interface/azurerm"
   version               = "~> 1.0"
   name                  = coalesce(var.nic_name, "${var.name}-nic")
   resource_group_name   = var.resource_group_name
@@ -60,7 +60,7 @@ resource "azurerm_windows_virtual_machine" "main" {
 }
 
 module "data_disk" {
-  source              = "opsolete.localhost:8080/terraform-modules-examples/data-disk/azurerm"
+  source              = "ops.localhost:8080/terraform-modules-examples/data-disk/azurerm"
   version             = "~> 1.1" # existing
   for_each            = local.data_disks
   name                = coalesce(each.value.name, "${var.name}-data-${each.key}")
@@ -75,7 +75,7 @@ module "data_disk" {
 }
 
 module "shutdown_schedule" {
-  source               = "opsolete.localhost:8080/terraform-modules-examples/shutdown-schedule/azurerm"
+  source               = "ops.localhost:8080/terraform-modules-examples/shutdown-schedule/azurerm"
   version              = "~> 1.1" # existing
   count                = var.auto_shutdown_time != null ? 1 : 0
   virtual_machine_id   = local.vm_id
@@ -88,7 +88,7 @@ module "shutdown_schedule" {
 }
 
 module "nsg" {
-  source               = "opsolete.localhost:8080/terraform-modules-examples/network-security-group/azurerm"
+  source               = "ops.localhost:8080/terraform-modules-examples/network-security-group/azurerm"
   version              = "~> 1.1" # existing
   count                = var.nsg_name != null ? 1 : 0
   name                 = var.nsg_name

@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-# Opsolete runs a template as the root module, so the module configures its provider.
+# OPS runs a template as the root module, so the module configures its provider.
 # Credentials come from ARM_* env variables (a workspace variable set), never from inputs.
 provider "azurerm" {
   features {}

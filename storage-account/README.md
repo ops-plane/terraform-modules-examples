@@ -1,7 +1,7 @@
 # storage-account
 
 A StorageV2 account with public network access off, reached through a private endpoint to its blob
-service. Ready for Opsolete: the module configures the `azurerm` provider itself (Opsolete runs a template
+service. Ready for OPS: the module configures the `azurerm` provider itself (OPS runs a template
 as the root module), and credentials come from `ARM_TENANT_ID`, `ARM_SUBSCRIPTION_ID`, `ARM_CLIENT_ID` and
 `ARM_CLIENT_SECRET` env variables, e.g. a variable set.
 
@@ -14,7 +14,7 @@ private endpoint (`private_endpoint_name`) instead of creating them, in the prov
 
 **Network:** the endpoint goes in subnet `subnet_name` of the virtual network `vnet_name` in resource group
 `vnet_resource_group_name`, in the same subscription. With a standard network per subscription, set the last two
-once per Opsolete project, as terraform variables in a variable set attached to the project, and offer the
+once per OPS project, as terraform variables in a variable set attached to the project, and offer the
 subnet names as a dropdown in the template.
 
 Not included: a private DNS zone group (link the endpoint to `privatelink.blob.core.windows.net` yourself).
