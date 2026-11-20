@@ -11,3 +11,7 @@ other settings differ (in OPS: *Use found values*, then set what's left). Data d
 network security group are imported with their own switches (`existing` per row of `data_disks`,
 `auto_shutdown_existing`, `nsg_existing`). `admin_password` is ignored after creation (Azure never returns it), so
 an imported VM takes any value.
+
+**Network security group rules** (`nsg_rules`) follow `network-security-group`: `source_address_prefix` and
+`destination_port_range` are required, and RDP or SSH open to anywhere needs `allow_public_admin_access = true` on
+the rule.
