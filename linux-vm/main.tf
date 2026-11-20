@@ -21,6 +21,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   secure_boot_enabled = var.secure_boot_enabled
   vtpm_enabled        = var.vtpm_enabled
 
+  encryption_at_host_enabled = var.encryption_at_host_enabled
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = var.os_disk_type

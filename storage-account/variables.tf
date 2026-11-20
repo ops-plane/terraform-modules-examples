@@ -46,6 +46,23 @@ variable "private_endpoint_name" {
   description = "Name of the private endpoint to the account's blob service."
 }
 
+variable "shared_access_key_enabled" {
+  type        = bool
+  description = "Shared key (account key and SAS) access: off, Entra ID only. On only for an imported account whose clients still use keys."
+  default     = false
+}
+
+variable "delete_retention_days" {
+  type        = number
+  description = "Days deleted blobs and containers can be restored (soft delete), 1-365."
+  default     = 7
+
+  validation {
+    condition     = var.delete_retention_days >= 1 && var.delete_retention_days <= 365
+    error_message = "1-365 days."
+  }
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

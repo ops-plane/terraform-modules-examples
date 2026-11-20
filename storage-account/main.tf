@@ -16,7 +16,18 @@ resource "azurerm_storage_account" "main" {
   min_tls_version                 = "TLS1_2"
   public_network_access_enabled   = false
   allow_nested_items_to_be_public = false
+  shared_access_key_enabled       = var.shared_access_key_enabled
+  default_to_oauth_authentication = true
   tags                            = var.tags
+
+  blob_properties {
+    delete_retention_policy {
+      days = var.delete_retention_days
+    }
+    container_delete_retention_policy {
+      days = var.delete_retention_days
+    }
+  }
 }
 
 resource "azurerm_private_endpoint" "blob" {

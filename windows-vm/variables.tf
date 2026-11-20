@@ -54,7 +54,7 @@ variable "existing" {
 }
 
 # Importing existing VMs: settings VMs made elsewhere, e.g. in the Azure portal, often have differently. Each
-# defaults to what this module always did, so new VMs don't change.
+# defaults to what this module does for new VMs.
 
 variable "nic_name" {
   type        = string
@@ -76,14 +76,20 @@ variable "public_ip_address_id" {
 
 variable "secure_boot_enabled" {
   type        = bool
-  description = "Secure boot: Trusted Launch; changing it replaces the VM. Default off."
-  default     = null
+  description = "Secure boot: Trusted Launch, needs a Gen2 image; changing it replaces the VM. Off for an imported VM without it."
+  default     = true
 }
 
 variable "vtpm_enabled" {
   type        = bool
-  description = "Virtual TPM: Trusted Launch; changing it replaces the VM. Default off."
-  default     = null
+  description = "Virtual TPM: Trusted Launch, needs a Gen2 image; changing it replaces the VM. Off for an imported VM without it."
+  default     = true
+}
+
+variable "encryption_at_host_enabled" {
+  type        = bool
+  description = "Encryption at host: encrypts temp disk and caches too. Needs the subscription's EncryptionAtHost feature registered, so off by default."
+  default     = false
 }
 
 variable "os_disk_type" {

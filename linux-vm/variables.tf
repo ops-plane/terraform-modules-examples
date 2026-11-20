@@ -27,14 +27,21 @@ variable "boot_diagnostics_enabled" {
   default = false
 }
 
+# Trusted Launch: needs a Gen2 image
 variable "secure_boot_enabled" {
   type    = bool
-  default = null
+  default = true
 }
 
 variable "vtpm_enabled" {
   type    = bool
-  default = null
+  default = true
+}
+
+# needs the subscription's EncryptionAtHost feature registered, so off by default
+variable "encryption_at_host_enabled" {
+  type    = bool
+  default = false
 }
 
 variable "os_disk_type" {

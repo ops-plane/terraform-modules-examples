@@ -17,4 +17,7 @@ private endpoint (`private_endpoint_name`) instead of creating them, in the prov
 once per OPS project, as terraform variables in a variable set attached to the project, and offer the
 subnet names as a dropdown in the template.
 
+**Defaults:** shared key access is off (Entra ID only, `shared_access_key_enabled`) and deleted blobs and
+containers can be restored for `delete_retention_days` (7).
+
 Not included: a private DNS zone group (link the endpoint to `privatelink.blob.core.windows.net` yourself).
