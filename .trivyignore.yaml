@@ -1,0 +1,5 @@
+misconfigurations:
+  - id: AZU-0012
+    paths:
+      - storage-account/main.tf
+    statement: public_network_access_enabled = false; the account is reached only through its private endpoint

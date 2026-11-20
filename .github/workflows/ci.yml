@@ -22,6 +22,13 @@ jobs:
           terraform_version: 1.17.1 # OPS's runners
           terraform_wrapper: false
       - run: terraform fmt -recursive -check
+      - name: scan
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: config
+          severity: HIGH,CRITICAL # MEDIUM and below (logging, geo-replication, …) are module choices
+          exit-code: "1"
+          trivyignores: .trivyignore.yaml
       - name: validate each module
         # a module that calls others from the registry (windows-vm), which CI can't reach: fmt only
         run: |
