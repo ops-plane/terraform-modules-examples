@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/ops-plane/terraform-modules-examples/compare/windows-vm-v2.0.1...windows-vm-v3.0.0) (2026-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **windows-vm,linux-vm,storage-account:** a VM deployed with the old defaults (no Trusted Launch) is replaced on the next apply unless secure_boot_enabled and vtpm_enabled are set to false; a Gen1 image needs both false. A storage account's shared key access is switched off unless shared_access_key_enabled = true.
+
+### Features
+
+* **windows-vm,linux-vm,storage-account:** Trusted Launch on, encryption at host, storage without shared keys and with soft delete ([5712788](https://github.com/ops-plane/terraform-modules-examples/commit/5712788f07707706f318e823d396289b68060c0a))
+
 ## [2.0.1](https://github.com/ops-plane/terraform-modules-examples/compare/windows-vm-v2.0.0...windows-vm-v2.0.1) (2026-11-11)
 
 
